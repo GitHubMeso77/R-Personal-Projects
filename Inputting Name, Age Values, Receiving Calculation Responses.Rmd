@@ -1,0 +1,49 @@
+---
+title: "Inputting Name, Age, Values, Receving Calculation Responses"
+author: "Mesonma Alexis Anwasi"
+date: '2022-10-29'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#R Programming Exercise Taken from 
+#https://www.w3resource.com/r-programming-exercises/basic/r-programming-basic-exercise-1.php
+#1. Write a R program to take input from the user (name and age) and display 
+#the values. Also print the version of R installation
+
+install.packages("contrib.url")
+library(contrib.url)
+
+name_age = function(name, age){
+  name = readline(prompt="Your Name:")
+  age = readline(prompt="Your Age:")
+  print(name)
+  print(age)
+  print(R.version.string)
+}
+
+name_age()
+
+#My Twist: Input age, return possible years of birth
+library(tidyverse)
+install.packages("lubridate")
+library(lubridate)
+library(dplyr)
+
+birth_year = function(age){
+  age=readline(prompt="What is your age?:")
+  c(print(paste("You were born in one of these two years:")), 
+    return(c((year(today() - dyears(as.numeric(age)))), year(today() - 
+                                            dyears(as.numeric(age)+1)))))
+}
+
+birth_year()
+```
+
+
